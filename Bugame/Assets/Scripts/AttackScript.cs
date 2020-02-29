@@ -67,18 +67,33 @@ public class AttackScript : MonoBehaviour
                 anim.SetBool("midWalk", false);
                 anim.SetBool("lowWalk", false);
                 anim.SetBool("highWalk", true);
+                if(Input.GetKeyDown(KeyCode.F))
+                {
+                    anim.SetTrigger("highAttack");
+                }
+                
             }
             if (swState == swordState.middle)
             {
                 anim.SetBool("lowWalk", false);
                 anim.SetBool("highWalk", false);
                 anim.SetBool("midWalk", true);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    anim.SetTrigger("middleAttack");
+                }
+                
             }
             if (swState == swordState.bottom)
             {
                 anim.SetBool("highWalk", false);
                 anim.SetBool("midWalk", false);
                 anim.SetBool("lowWalk", true);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    anim.SetTrigger("lowAttack");
+                }
+                
             }
         }
     }

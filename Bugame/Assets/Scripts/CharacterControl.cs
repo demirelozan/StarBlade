@@ -10,6 +10,7 @@ public class CharacterControl : MonoBehaviour
     [SerializeField] private float jumpForce = 250;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
+    private AttackScript atkScr;
     [SerializeField]
     private bool isGrounded()
     {
@@ -28,6 +29,7 @@ public class CharacterControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        atkScr = GetComponent<AttackScript>();
     }
     private void Update()
     {
@@ -41,8 +43,9 @@ public class CharacterControl : MonoBehaviour
     }
     private void Movement()
     {
-        
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = 0f;
+        if(Input.GetKey(atkScr.moveLeft) || Input.GetKey(atkScr.moveRight))
+            horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("speed", Mathf.Abs(horizontal));
         rb.velocity = new Vector2(horizontal * 3, rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
