@@ -8,16 +8,16 @@ public class CharacterControl : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
     [SerializeField] private float jumpForce = 250;
-    private CircleCollider2D circleCollider;
+    private BoxCollider2D boxCollider2D;
     private Animator animator;
     [SerializeField]
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(circleCollider.bounds.center, Vector2.down, circleCollider.bounds.extents.y + 0.1f, groundLayer);
+        RaycastHit2D raycastHit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + 0.1f, groundLayer);
         Color rayColor;
         bool __state = (raycastHit.collider != null);
         rayColor = (__state) ? Color.green : Color.red;
-        Debug.DrawRay(circleCollider.bounds.center, Vector2.down, rayColor);
+        Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down, rayColor);
         return __state;
     }
 
@@ -26,7 +26,7 @@ public class CharacterControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        circleCollider = GetComponent<CircleCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
     }
     private void Update()
