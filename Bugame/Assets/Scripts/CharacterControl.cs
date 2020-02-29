@@ -5,32 +5,19 @@ using UnityEngine;
 public class CharacterControl : MonoBehaviour
 {
     private Rigidbody2D rb;
-
     [SerializeField]
     LayerMask groundLayer;
-
     private CircleCollider2D circleCollider;
-
     private Animator animator;
-
     [SerializeField]
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.Raycast(circleCollider.bounds.center, Vector2.down, circleCollider.bounds.extents.y + 0.1f, groundLayer);
         Color rayColor;
-        if (raycastHit.collider != null)
-        {
-            rayColor = Color.green;
-
-        }
-        else
-        {
-            rayColor = Color.red;
-
-        }
+        bool __state = (raycastHit.collider != null);
+        rayColor = (__state) ? Color.green : Color.red;
         Debug.DrawRay(circleCollider.bounds.center, Vector2.down, rayColor);
-
-        return raycastHit.collider != null;
+        return __state;
     }
 
 
@@ -38,9 +25,7 @@ public class CharacterControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         circleCollider = GetComponent<CircleCollider2D>();
-
         animator = GetComponent<Animator>();
     }
     private void Update()
@@ -48,13 +33,10 @@ public class CharacterControl : MonoBehaviour
         Debug.Log(animator.GetBool("isJumping"));
         Animations();
     }
-
-
     private void FixedUpdate()
     {
         Movement();
     }
-
     private void Movement()
     {
         
@@ -70,15 +52,13 @@ public class CharacterControl : MonoBehaviour
         else if(isGrounded() == false)
         {
             animator.SetBool("isJumping", false);
-
         }
-
     }
     private void Animations()
     {
         if (horizontal > 0)
         {
-            transform.localScale = new Vector3(5,5, 5);
+            transform.localScale = new Vector3(5, 5, 5);
         }
         if (horizontal < 0)
         {

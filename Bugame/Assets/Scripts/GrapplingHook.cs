@@ -5,9 +5,7 @@ using UnityEngine;
 public class GrapplingHook : MonoBehaviour
 {
     private LineRenderer line;
-
     private float line_width = 0.1f;
-
     void Start()
     {
         line = GetComponent<LineRenderer>();
@@ -18,8 +16,6 @@ public class GrapplingHook : MonoBehaviour
         line.startWidth = line_width;
         line.endWidth = line_width;
     }
-
-   
     void Update()
     {
        // line.SetPosition = (0, transform.position);

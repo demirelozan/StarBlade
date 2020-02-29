@@ -9,12 +9,8 @@ public class PlatformScript : MonoBehaviour
     Animator animator;
     void Start()
     {
-        
         animator = GetComponent<Animator>();
-        
     }
-
-    
     void Update()
     {
         PlatformMove();   
