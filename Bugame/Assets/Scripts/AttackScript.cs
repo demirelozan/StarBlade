@@ -10,8 +10,12 @@ public class AttackScript : MonoBehaviour
     public KeyCode downState;
     public KeyCode moveLeft;
     public KeyCode moveRight;
+
     private Animator anim;
+
     private int temp;
+
+    
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -54,17 +58,28 @@ public class AttackScript : MonoBehaviour
             Debug.Log($"new swState={(int)swState}");
         }
         //Animations
-        if (swState == swordState.top)
-        {
-            
-        }
-        if (swState == swordState.middle)
+        if (this.gameObject.GetComponent<CharacterControl>().horizontal > 0 || this.gameObject.GetComponent<CharacterControl>().horizontal < 0)
         {
 
-        }
-        if (swState == swordState.bottom)
-        {
 
+            if (swState == swordState.top)
+            {
+                anim.SetBool("midWalk", false);
+                anim.SetBool("lowWalk", false);
+                anim.SetBool("highWalk", true);
+            }
+            if (swState == swordState.middle)
+            {
+                anim.SetBool("lowWalk", false);
+                anim.SetBool("highWalk", false);
+                anim.SetBool("midWalk", true);
+            }
+            if (swState == swordState.bottom)
+            {
+                anim.SetBool("highWalk", false);
+                anim.SetBool("midWalk", false);
+                anim.SetBool("lowWalk", true);
+            }
         }
     }
 }

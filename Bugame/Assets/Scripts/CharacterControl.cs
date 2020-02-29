@@ -22,7 +22,7 @@ public class CharacterControl : MonoBehaviour
     }
 
 
-    private float horizontal;
+    public float horizontal;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +33,7 @@ public class CharacterControl : MonoBehaviour
     {
         //Debug.Log(animator.GetBool("isJumping"));
         Animations();
+        Debug.Log(horizontal);
     }
     private void FixedUpdate()
     {
@@ -44,7 +45,7 @@ public class CharacterControl : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("speed", Mathf.Abs(horizontal));
         rb.velocity = new Vector2(horizontal * 3, rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             animator.SetBool("isJumping", true);
             rb.AddForce(new Vector2(0, jumpForce));
@@ -57,6 +58,14 @@ public class CharacterControl : MonoBehaviour
     }
     private void Animations()
     {
+        if(horizontal == 0)
+        {
+            animator.SetBool("lowWalk", false);
+            animator.SetBool("midWalk", false);
+            animator.SetBool("highWalk", false);
+
+        }
+        
         if (horizontal > 0)
         {
             transform.localScale = new Vector3(5, 5, 5);
