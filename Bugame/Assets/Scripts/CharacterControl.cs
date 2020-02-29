@@ -11,14 +11,16 @@ public class CharacterControl : MonoBehaviour
 
     private CircleCollider2D circleCollider;
 
+    private Animator animator;
+
     [SerializeField]
     private bool isGrounded()
-    {   
-        RaycastHit2D raycastHit = Physics2D.Raycast(circleCollider.bounds.center, Vector2.down,circleCollider.bounds.extents.y + 0.1f,groundLayer);
+    {
+        RaycastHit2D raycastHit = Physics2D.Raycast(circleCollider.bounds.center, Vector2.down, circleCollider.bounds.extents.y + 0.1f, groundLayer);
         Color rayColor;
-        if(raycastHit.collider != null)
+        if (raycastHit.collider != null)
         {
-            rayColor = Color.green;    
+            rayColor = Color.green;
 
         }
         else
@@ -28,7 +30,7 @@ public class CharacterControl : MonoBehaviour
         }
         Debug.DrawRay(circleCollider.bounds.center, Vector2.down, rayColor);
 
-        return raycastHit.collider!= null;
+        return raycastHit.collider != null;
     }
 
 
@@ -38,10 +40,16 @@ public class CharacterControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         circleCollider = GetComponent<CircleCollider2D>();
+
+        animator = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        Debug.Log(animator.GetBool("isJumping"));
+        Animations();
     }
 
-    
-    
+
     private void FixedUpdate()
     {
         Movement();
@@ -49,12 +57,39 @@ public class CharacterControl : MonoBehaviour
 
     private void Movement()
     {
+        
         horizontal = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(horizontal, rb.velocity.y);
+        animator.SetFloat("speed", Mathf.Abs(horizontal));
+        rb.velocity = new Vector2(horizontal * 3, rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
+            animator.SetBool("isJumping", true);
             rb.AddForce(new Vector2(0, 150));
+            
+        }
+        else if(isGrounded() == false)
+        {
+            animator.SetBool("isJumping", false);
+
         }
 
+    }
+    private void Animations()
+    {
+        if (horizontal > 0)
+        {
+            transform.localScale = new Vector3(5,5, 5);
+        }
+        if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(-5, 5, 5);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+        }
     }
 }
