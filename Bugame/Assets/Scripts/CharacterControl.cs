@@ -31,7 +31,7 @@ public class CharacterControl : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(animator.GetBool("isJumping"));
+        //Debug.Log(animator.GetBool("isJumping"));
         Animations();
     }
     private void FixedUpdate()
