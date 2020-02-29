@@ -7,6 +7,7 @@ public class CharacterControl : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     LayerMask groundLayer;
+    [SerializeField] private float jumpForce = 250;
     private CircleCollider2D circleCollider;
     private Animator animator;
     [SerializeField]
@@ -46,7 +47,7 @@ public class CharacterControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             animator.SetBool("isJumping", true);
-            rb.AddForce(new Vector2(0, 150));
+            rb.AddForce(new Vector2(0, jumpForce));
             
         }
         else if(isGrounded() == false)

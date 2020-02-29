@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
     <Compile Include="Assets\Scripts\CharacterControl.cs" />
+    <Compile Include="Assets\Scripts\EskrimScript.cs" />
     <Compile Include="Assets\Scripts\GrapplingHook.cs" />
     <Compile Include="Assets\Scripts\PlatformScript.cs" />
     <Reference Include="Unity.Timeline.Editor">
