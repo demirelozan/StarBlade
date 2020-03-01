@@ -389,38 +389,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5744213819447461311}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1109919002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9045750721455557192, guid: 1c89602088491e64e988136e1b3455a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 9045750720244685391}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1109919003
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109919002}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00045712665, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14262938, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!1 &1192550044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6895350459739762609, guid: 0e71b8c4e1d38db479c95ca1f18ca39d,
@@ -4698,11 +4666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
-    - target: {fileID: 9045750721455557192, guid: 1c89602088491e64e988136e1b3455a1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9045750721455557190, guid: 1c89602088491e64e988136e1b3455a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4763,10 +4726,5 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 2094418952}
-    - target: {fileID: 9045750721455557191, guid: 1c89602088491e64e988136e1b3455a1,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c89602088491e64e988136e1b3455a1, type: 3}
