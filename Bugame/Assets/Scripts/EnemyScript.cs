@@ -4,46 +4,36 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    Transform player;
-    private Animator anim;
-    private float playerHealth = 120;
-    UnityEngine.AI.NavMeshAgent nav;
-    public bool allowtohit = false;
-    private float navspeed = 0.5f;
+    private Animator animator;
 
-    private bool enemyDeath = false;
+    [SerializeField]
+    private float speed = 0.5f;
+    private float stoppingDistance = 2f;
+    private float startingDistance = 25f;
 
-    private void Awake()
-    {
-        if (!enemyDeath)
-        {
-            nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            anim = GetComponent<Animator>();
-
-
-            
-        }
-    }
-    private void OnGUI()
-    {
-        nav.SetDestination(player.position);
-        float distance = Vector3.Distance(player.transform.position, this.transform.position);
-        navspeed += Time.deltaTime / 50; //değiştir
-        nav.speed = navspeed;
-
-        anim.SetBool("walk", true);
-        
-
-    }
+    private Transform target;
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
 
     void Update()
     {
-        
+        EnemyFollow();   
+    }
+    private void EnemyFollow()
+    {
+        if(Vector2.Distance(transform.position,target.position) > stoppingDistance  && Vector2.Distance(transform.position,target.position) < startingDistance)
+        {
+            animator.SetBool("attack", false);
+            animator.SetBool("move", true);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+        if(Vector2.Distance(transform.position, target.position) > stoppingDistance)
+        {
+           // animator.SetBool("walk", false);
+           // animator.SetBool("attack", true);
+        }
     }
 }
