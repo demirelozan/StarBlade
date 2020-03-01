@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraMoveScript.cs" />
     <Compile Include="Assets\CameraScript.cs" />
     <Compile Include="Assets\Scripts\AttackScript.cs" />
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
@@ -70,8 +71,10 @@
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\EskrimScript.cs" />
     <Compile Include="Assets\Scripts\GrapplingHook.cs" />
+    <Compile Include="Assets\Scripts\olme.cs" />
     <Compile Include="Assets\Scripts\PlatformScript.cs" />
     <Compile Include="Assets\Scripts\StateManagement.cs" />
+    <Compile Include="Assets\Scripts\ui.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ozand/OneDrive/Masaüstü/bugame/Bugame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CharacterControl : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -38,6 +39,10 @@ public class CharacterControl : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         //Debug.Log(animator.GetBool("isJumping"));
         Animations();
         Debug.Log(horizontal);

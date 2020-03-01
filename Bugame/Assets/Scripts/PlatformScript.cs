@@ -19,7 +19,7 @@ public class PlatformScript : MonoBehaviour
     {
         if (button.GetComponent<ButtonScript>().IsClicked())
         {
-            animator.SetBool("platformMove", true);
+            animator.SetTrigger("platformMove");
         }
     }
 }
