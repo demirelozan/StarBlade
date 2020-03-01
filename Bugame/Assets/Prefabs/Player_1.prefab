@@ -121,6 +121,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpForce: 250
+  Jump: 32
+  horizontal: 0
 --- !u!95 &5744213818406307897
 Animator:
   serializedVersion: 3

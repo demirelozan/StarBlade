@@ -11,6 +11,9 @@ public class AttackScript : MonoBehaviour
     public KeyCode moveLeft;
     public KeyCode moveRight;
 
+    public KeyCode Attack;
+
+
     private Animator anim;
 
     private int temp;
@@ -22,6 +25,7 @@ public class AttackScript : MonoBehaviour
     }
     void Update()
     {
+        AttackOnEnemy();
         //Increments and Decrements
         if (Input.GetKeyDown(upState))
         {
@@ -67,7 +71,7 @@ public class AttackScript : MonoBehaviour
                 anim.SetBool("midWalk", false);
                 anim.SetBool("lowWalk", false);
                 anim.SetBool("highWalk", true);
-                if(Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(Attack))
                 {
                     anim.SetTrigger("highAttack");
                 }
@@ -78,7 +82,7 @@ public class AttackScript : MonoBehaviour
                 anim.SetBool("lowWalk", false);
                 anim.SetBool("highWalk", false);
                 anim.SetBool("midWalk", true);
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(Attack))
                 {
                     anim.SetTrigger("middleAttack");
                 }
@@ -89,12 +93,16 @@ public class AttackScript : MonoBehaviour
                 anim.SetBool("highWalk", false);
                 anim.SetBool("midWalk", false);
                 anim.SetBool("lowWalk", true);
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(Attack))
                 {
                     anim.SetTrigger("lowAttack");
                 }
                 
             }
         }
+    }
+    private void AttackOnEnemy()
+    {
+        //attack tuşuna basıldığında playerdan aşağı yukarı orta olacak şekilde 3 raycast yolla biri çalışsın sadece. raycast enemy e değiyosa ölsün 
     }
 }
